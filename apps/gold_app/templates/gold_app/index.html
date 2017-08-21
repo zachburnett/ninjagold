@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+    <a href="/gold/play"> go play</a><br>
+    <a href="/gold/show"> show all players</a><br>
+    <a href="/gold/logout">logout</a>
+     <center><table>
+         <h1>  Top five players </h1>
+        <tr>    
+            <th> users</th>
+            <th>score</th>
+            
+        </tr>
+       {%for player in top5%}
+        <tr>
+            <td><a href="/gold/{{player.id}}/showplayer">{{player.email}}</a></td>
+            <td>{{player.total}}</td>
+        </tr>   
+        </tr>
+        {%endfor%}
+        
+    </table></center>
+
+</body>
+</html>

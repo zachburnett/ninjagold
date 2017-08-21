@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/gold/show"> show all players</a><br>
+    <a href="/gold/logout">logout</a><br>
+    <a href="/gold"> go back</a>
+    <h1>{{total}}</h1>
+     <div style='outline: thin solid black; display: inline-block; background: gold;
+    height: 100px; width: 100px;'>
+    <form action="/gold/process" method="post">
+        {% csrf_token %}
+        <input type='hidden' name='building' value='cave'>
+        <input type="submit" value="go to cave">
+        <center><p> win or loose up to 3 in gold</p></center>   
+    </form>
+     </div>
+
+    <p>your gold: </p>
+    
+    <div style='outline: thin solid black; background: gold;
+    height: 100px; width: 100px; display: inline-block;'>
+    <form action="/gold/process" method="post">
+        {% csrf_token %}
+        <input type='hidden' name='building' value='barn'>
+        <input type="submit" value="get barn gold">
+         <center><p>win or loose up to 8 in gold</p></center>  
+    </form>
+    </div>     
+   
+     <p>your gold: </p>
+    <div style='outline: thin solid black; background: gold;
+    height: 100px; width: 100px; display: inline-block; '>
+        <form action="/gold/process" method="post"  >
+            {% csrf_token %}
+            <input type='hidden' name='building' value='river'>
+            <input type="submit" value="get river gold">
+            <center><p>win or loose up to 15 in gold</p></center>   
+        </form>
+    </div>
+    <p>your gold: </p>
+    <div style='outline: thin solid black; background: gold;
+    height: 100px; width: 100px; display: inline-block; '>
+        <form action="/gold/process" method="post">
+            {% csrf_token %}
+            <input type='hidden' name='building' value='steal_gold'>
+            <input type="submit" value="steal some gold!">
+            <center><p>win or loose up to 100 in gold</p></center>   
+        </form>
+    </div>
+    
+    <div style='outline: thin solid black; overflow-y: scroll;
+    height: 300px; width: 300px;'>
+        {% for game in games %}
+        <p>You scored {{game.gold}}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
